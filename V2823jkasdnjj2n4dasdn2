@@ -1,0 +1,22 @@
+local NotificationBindable = Instance.new("BindableFunction")
+NotificationBindable.OnInvoke = callback
+--
+game.StarterGui:SetCore("SendNotification", {
+    Title = "Infinite Barrage";
+    Text = "Reset your character to stop Infinite Barrage";
+    Icon = "";
+    Duration = 10;
+    Callback = NotificationBindable;
+})
+local RS = game:GetService("RunService").RenderStepped
+repeat RS:Wait()
+for i,v in pairs(getgc()) do
+    if type(v) == "function" then
+        for i2,v2 in pairs(debug.getupvalues(v)) do
+            if type(v2) == "number" and v2 == 0 then
+                debug.setupvalue(v, i2, -math.huge)
+            end
+        end
+    end
+end
+until game.Players.LocalPlayer.Character.Humanoid.Health == 0
