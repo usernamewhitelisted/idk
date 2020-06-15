@@ -9,7 +9,7 @@ game.StarterGui:SetCore("SendNotification", {
     Callback = NotificationBindable;
 })
 local RS = game:GetService("RunService").RenderStepped
-repeat RS:Wait(0.5)
+repeat RS:Wait(1)
 for i,v in pairs(getgc()) do
     if type(v) == "function" then
         for i2,v2 in pairs(debug.getupvalues(v)) do
