@@ -4,7 +4,7 @@ for i,v in pairs(getgc()) do
     if type(v) == "function" then
         for i2,v2 in pairs(debug.getupvalues(v)) do
             if type(v2) == "number" and v2 == 0 then
-                debug.setupvalue(v, i2, 1e+16)
+                debug.setupvalue(v, i2, -1e+16)
             end
         end
     end
